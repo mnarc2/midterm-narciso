@@ -1,7 +1,7 @@
 ---
 title: "EAES 380 Midterm"
-author: "Insert your name here"
-date: "Insert date here"
+author: "Mo Narciso"
+date: "10/27/26"
 output:
   html_document:
     toc: true
@@ -18,9 +18,9 @@ By completing and submitting this exam, I certify that:
 - I may use course materials, lecture notes, R documentation/help files, and other resources explicitly approved by the instructors.
 - I understand that I am responsible for being able to explain all code and written work that I submit.
 
-**Name:** ______________________________  
-**Signature:** ___________________________  
-**Date:** _______________________________
+**Name:** Mo Narciso  
+**Signature:** Mo Narciso  
+**Date:** 10/28/26
 
 # Before you begin
 
