@@ -86,13 +86,13 @@ penguins %>%
 **Goal:** Visualize the relationship and note a species difference.
 
 ```{r visualize-penguin-body-mass, eval = FALSE}
-___ %>% 
-  ggplot(aes(x = ___, y = ___, color = ___, shape = ___)) +
+penguins %>% 
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm, color = species, shape = species)) +
   geom_point() +
   theme_classic()
 ```
 
-> Replace this text with (1) whether there is an association and (2) one observation about Gentoo versus the other two species.
+> There seems to be a positive correlation between the two variables. The Gentoo penguins have generally higher flipper lengths and body masses than the other species.
 
 ## Exercise 6 — Select, filter to one species, and assign (10 points)
 
