@@ -1,0 +1,190 @@
+---
+title: "EAES 380 Midterm Instructions"
+output: 
+  tufte::tufte_html:
+    css: ../exam.css
+    tufte_variant: "envisioned"
+    highlight: pygments
+link-citations: yes
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+# Academic integrity and honor code
+
+This is a closed-book, individual exam. **Generative AI tools are not permitted.** This includes ChatGPT, Claude, Gemini, Copilot, Grok, and similar tools that can generate or revise code, written answers, or exam content.
+
+By completing and submitting this exam, I certify that:
+
+- I completed the submitted work myself.
+- I did not use generative AI to generate, debug, revise, or interpret code or written answers for this exam.
+- I did not communicate with or gain information from classmates, and I did not copy work from past assignments.
+- I may use course materials, lecture notes, R documentation/help files, and other resources explicitly approved by the instructors.
+- I understand that I am responsible for being able to explain all code and written work that I submit.
+
+**Name:** ______________________________  
+**Signature:** ___________________________  
+**Date:** _______________________________
+
+> **Important:** Signing this statement is required. The same statement appears in your starter file; complete it there as well.
+
+# Midterm overview
+
+You will inspect, wrangle, and visualize the `penguins` data from the `{palmerpenguins}` package.
+
+## Learning goals
+
+By the end of this midterm, you should be able to:
+
+A. Inspect a data frame and describe its size and variable types.
+B. Count observations by group and visualize counts by island and species.
+C. Produce a scatter plot and interpret an association and a species difference.
+D. Select and filter to a species-specific subset.
+E. Explain alphabetical factor order and re-level a factor for a plot.
+
+## Deliverable
+
+Complete **`midterm-starter.Rmd`**. Your finished starter file should contain your code and written responses and should Knit successfully from top to bottom.
+
+## Before asking for help
+
+First check spelling, parentheses, quotation marks, and package loading. If you are still stuck, ask Dr. Gavin McNicol or TA Kayode Ayegbusi and show them the code and error message.
+
+# Getting started
+
+If you are reading a knitted copy of these instructions, treat the steps below as review.
+
+- Open the GitHub repository you want to copy and add `/generate` to the URL.
+- Under **Owner**, choose `EAES-380`. Do not choose your personal account.
+- Name the repository `midterm-yourlastname` and keep it **Private**.
+- Clone it into a New Project from a GitHub Repo in [RStudio Cloud](https://rstudio.cloud).
+- Open `midterm-instructions.Rmd` and Knit it.
+- Open `midterm-starter.Rmd`. **This is the file you will complete.**
+
+# Warm-up: R Markdown + Git
+
+Open `midterm-starter.Rmd`.
+
+A. Replace the author and date in the YAML with your name and today's date.
+B. Complete and sign the honor-code statement.
+C. Knit, then commit with a message such as `Update author and honor code` and push to GitHub.
+
+If you have any problems pushing changes, let us know now.
+
+# Packages and data
+
+```{r photo, fig.margin = TRUE, echo = FALSE, fig.width = 5, fig.cap = "Penguins Dataset", eval = TRUE}
+knitr::include_graphics("img/penguins.png")
+```
+
+```{r load-packages-demo, message = FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+# Exercises
+
+## Exercise 1 — Glimpse and describe (5 points)
+
+**Goal:** Inspect the size and variable types of `penguins`.
+
+Under Exercise 1 in your starter file, write and label a code chunk that uses `glimpse()` to inspect the `penguins` dataset. After the chunk, state:
+
+- how many rows and variables are in the dataset
+- of the variables, how many are categorical and how many are numerical
+
+## Exercise 2 — Variable names (5 points)
+
+**Goal:** Explain why the column names are “good.”
+
+Under Exercise 2, write and label a code chunk that uses `names()` to inspect the variable names in `penguins`. After the chunk, explain why the names are “good.” Think about the things we normally fix when we read data in that contains bad names.
+
+## Exercise 3 — Count by species (5 points)
+
+**Goal:** Produce a frequency table.
+
+Under Exercise 3, write and label a code chunk that uses `count()` to output the number of observations for each `species` of penguin. After the chunk, state the pair of data-wrangling functions we could have used instead to generate a similar output.
+
+## Exercise 4 — Bar plot by island and species (5 points)
+
+**Goal:** Visualize counts by island, filled by species, and report where each species was observed.
+
+Under Exercise 4, copy and complete the code chunk below so that it generates a bar plot of penguin observations by `island`, with fill varying by `species`. Under the completed chunk, state which islands each species of penguins was observed at.
+
+```{r visualize-penguin-island-species, eval = FALSE}
+___ %>% 
+  ggplot(aes(x = ___, fill = ___)) +
+  geom_bar() +
+  theme_classic()
+```
+
+## Exercise 5 — Scatter plot of body mass and flipper length (5 points)
+
+**Goal:** Visualize the relationship and note a species difference.
+
+Under Exercise 5, copy and complete the code chunk below so that it generates a scatter plot of `body_mass_g` (x-axis) against `flipper_length_mm` (y-axis), with color and shape varying by `species`. Under the completed chunk:
+
+1. state whether you think there is an association between the two variables, and
+2. make one other observation about what differs between `Gentoo` penguins and the other two species.
+
+```{r visualize-penguin-body-mass, eval = FALSE}
+___ %>% 
+  ggplot(aes(x = ___, y = ___, color = ___, shape = ___)) +
+  geom_point() +
+  theme_classic()
+```
+
+## Exercise 6 — Select, filter to one species, and assign (10 points)
+
+**Goal:** Build a species-specific subset of flipper length and the categorical variables.
+
+Under Exercise 6, write and label a code chunk that takes `penguins` as input and uses a pipeline to:
+
+1. **select** `flipper_length_mm` and all the categorical variables,
+2. **filter** for one penguin `species` of your choice, and
+3. assign the output to a new data object.
+
+Give the new object a sensible name that follows the guidelines for naming objects in R.
+
+## Exercise 7 — Explain sex order and re-level (5 points)
+
+**Goal:** Explain alphabetical factor order and correct it.
+
+The following chunk (also in the starter) draws a violin plot of flipper length by sex from the object you created in Exercise 6. You will need to supply that object and set `eval = TRUE` for the chunk to run.
+
+```{r visualize-penguin-flipper-length, eval = FALSE}
+___ %>% 
+  ggplot(aes(x = sex, y = flipper_length_mm)) +
+  geom_violin() +
+  theme_classic()
+```
+
+Under Exercise 7:
+
+- state why `female` appears on the left, `male` appears in the middle, and `NA` appears on the right,
+- make reference to the data type/class of the `sex` variable and the two components that make up that data class,
+- then copy and complete the chunk below so that it outputs a violin plot with `male` on the left and `female` on the right. The chunk should also filter out the missing `sex` values first.
+
+```{r recode-sex-levels, eval = FALSE}
+___ %>% 
+  filter(!is.na(___)) %>% 
+  mutate(sex = fct_relevel(sex, "___", "___")) %>% 
+  ggplot(aes(x = sex, y = flipper_length_mm)) +
+  geom_violin() +
+  theme_classic()
+```
+
+🧶 ✅ ⬆️ Knit, commit, and push your final changes to GitHub with an appropriate commit message.
+
+Great work! If you finish early, please respect your classmates by leaving the room quietly. See you next Monday!
+
+# Submission checklist
+
+- [ ] I signed the academic-integrity statement in both files.
+- [ ] My name and date are correct in the starter YAML.
+- [ ] I answered every requested question in complete sentences.
+- [ ] All required code is in `midterm-starter.Rmd`.
+- [ ] The document Knits from top to bottom without errors.
+- [ ] I committed and pushed the final version to GitHub.

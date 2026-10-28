@@ -1,0 +1,133 @@
+---
+title: "EAES 380 Midterm"
+author: "Insert your name here"
+date: "Insert date here"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+# Academic integrity and honor code
+
+By completing and submitting this exam, I certify that:
+
+- I completed the submitted work myself.
+- I did not use generative AI (including ChatGPT, Claude, Gemini, Copilot, Grok, or similar tools) to generate, debug, revise, or interpret code or written answers for this exam.
+- I did not communicate with or gain information from classmates, and I did not copy work from past assignments.
+- I may use course materials, lecture notes, R documentation/help files, and other resources explicitly approved by the instructors.
+- I understand that I am responsible for being able to explain all code and written work that I submit.
+
+**Name:** ______________________________  
+**Signature:** ___________________________  
+**Date:** _______________________________
+
+# Before you begin
+
+Work through the exercises using `midterm-instructions.Rmd` as your guide. Keep **all submitted code in this file** and Knit frequently.
+
+Ask Dr. Gavin McNicol or TA Kayode Ayegbusi if you are still stuck after checking spelling, parentheses, and Knit errors.
+
+# Load packages
+
+```{r load-packages, eval = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+# Exercises
+
+## Exercise 1 — Glimpse and describe (5 points)
+
+**Goal:** Inspect the size and variable types of `penguins`.
+
+```{r glimpse-penguins, eval = FALSE}
+# Your code here
+```
+
+> Replace this text with the number of rows and variables, and how many are categorical versus numerical.
+
+## Exercise 2 — Variable names (5 points)
+
+**Goal:** Explain why the column names are “good.”
+
+```{r names-penguins, eval = FALSE}
+# Your code here
+```
+
+> Replace this text with why the names are “good,” referencing things we normally fix in bad names.
+
+## Exercise 3 — Count by species (5 points)
+
+**Goal:** Produce a frequency table.
+
+```{r count-species, eval = FALSE}
+# Your code here
+```
+
+> Replace this text with the pair of data-wrangling functions that could produce a similar output.
+
+## Exercise 4 — Bar plot by island and species (5 points)
+
+**Goal:** Visualize counts by island, filled by species, and report where each species was observed.
+
+```{r visualize-penguin-island-species, eval = FALSE}
+___ %>% 
+  ggplot(aes(x = ___, fill = ___)) +
+  geom_bar() +
+  theme_classic()
+```
+
+> Replace this text with which islands each species was observed at.
+
+## Exercise 5 — Scatter plot of body mass and flipper length (5 points)
+
+**Goal:** Visualize the relationship and note a species difference.
+
+```{r visualize-penguin-body-mass, eval = FALSE}
+___ %>% 
+  ggplot(aes(x = ___, y = ___, color = ___, shape = ___)) +
+  geom_point() +
+  theme_classic()
+```
+
+> Replace this text with (1) whether there is an association and (2) one observation about Gentoo versus the other two species.
+
+## Exercise 6 — Select, filter to one species, and assign (10 points)
+
+**Goal:** Build a species-specific subset of flipper length and the categorical variables.
+
+```{r species-subset, eval = FALSE}
+# Your code here
+```
+
+## Exercise 7 — Explain sex order and re-level (5 points)
+
+**Goal:** Explain alphabetical factor order and correct it.
+
+```{r visualize-penguin-flipper-length, eval = FALSE}
+___ %>% 
+  ggplot(aes(x = sex, y = flipper_length_mm)) +
+  geom_violin() +
+  theme_classic()
+```
+
+> Replace this text with why `female` is left, `male` is middle, and `NA` is right, referencing the type/class of `sex` and its two components.
+
+```{r recode-sex-levels, eval = FALSE}
+___ %>% 
+  filter(!is.na(___)) %>% 
+  mutate(sex = fct_relevel(sex, "___", "___")) %>% 
+  ggplot(aes(x = sex, y = flipper_length_mm)) +
+  geom_violin() +
+  theme_classic()
+```
+
+# Submission checklist
+
+- [ ] I signed the academic-integrity statement.
+- [ ] My name and date are correct in the YAML.
+- [ ] I answered every requested question in complete sentences.
+- [ ] All required code is in this file.
+- [ ] This document Knits without errors.
+- [ ] I committed and pushed my final changes to GitHub.
