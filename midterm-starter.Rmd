@@ -99,7 +99,9 @@ penguins %>%
 **Goal:** Build a species-specific subset of flipper length and the categorical variables.
 
 ```{r species-subset, eval = FALSE}
-# Your code here
+species_subset <- penguins %>%
+  select(flipper_length_mm, species, island, sex) %>%
+  filter(species == "Gentoo")
 ```
 
 ## Exercise 7 — Explain sex order and re-level (5 points)
@@ -107,18 +109,18 @@ penguins %>%
 **Goal:** Explain alphabetical factor order and correct it.
 
 ```{r visualize-penguin-flipper-length, eval = FALSE}
-___ %>% 
+penguins %>% 
   ggplot(aes(x = sex, y = flipper_length_mm)) +
   geom_violin() +
   theme_classic()
 ```
 
-> Replace this text with why `female` is left, `male` is middle, and `NA` is right, referencing the type/class of `sex` and its two components.
+> Female is on the left, male is in the middle, and NA is on the right. This is because sex is a factor variable, which has two components: the integer level and the label. The factor labels are sorted by aphabetical order by default.
 
 ```{r recode-sex-levels, eval = FALSE}
-___ %>% 
-  filter(!is.na(___)) %>% 
-  mutate(sex = fct_relevel(sex, "___", "___")) %>% 
+penguins %>% 
+  filter(!is.na(sex)) %>% 
+  mutate(sex = fct_relevel(sex, "male", "female")) %>% 
   ggplot(aes(x = sex, y = flipper_length_mm)) +
   geom_violin() +
   theme_classic()
@@ -126,9 +128,9 @@ ___ %>%
 
 # Submission checklist
 
-- [ ] I signed the academic-integrity statement.
-- [ ] My name and date are correct in the YAML.
-- [ ] I answered every requested question in complete sentences.
-- [ ] All required code is in this file.
-- [ ] This document Knits without errors.
-- [ ] I committed and pushed my final changes to GitHub.
+- [x] I signed the academic-integrity statement.
+- [x] My name and date are correct in the YAML.
+- [x] I answered every requested question in complete sentences.
+- [x] All required code is in this file.
+- [x] This document Knits without errors.
+- [x] I committed and pushed my final changes to GitHub.

@@ -182,9 +182,9 @@ Great work! If you finish early, please respect your classmates by leaving the r
 
 # Submission checklist
 
-- [ ] I signed the academic-integrity statement in both files.
-- [ ] My name and date are correct in the starter YAML.
-- [ ] I answered every requested question in complete sentences.
-- [ ] All required code is in `midterm-starter.Rmd`.
-- [ ] The document Knits from top to bottom without errors.
-- [ ] I committed and pushed the final version to GitHub.
+- [x] I signed the academic-integrity statement.
+- [x] My name and date are correct in the YAML.
+- [x] I answered every requested question in complete sentences.
+- [x] All required code is in this file.
+- [x] This document Knits without errors.
+- [x] I committed and pushed my final changes to GitHub.
