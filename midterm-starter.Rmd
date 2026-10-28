@@ -73,13 +73,13 @@ count(species)
 **Goal:** Visualize counts by island, filled by species, and report where each species was observed.
 
 ```{r visualize-penguin-island-species, eval = FALSE}
-___ %>% 
-  ggplot(aes(x = ___, fill = ___)) +
+penguins %>% 
+  ggplot(aes(x = island, fill = species)) +
   geom_bar() +
   theme_classic()
 ```
 
-> Replace this text with which islands each species was observed at.
+> The species were observed at Biscoe, Dream, and Togersen.
 
 ## Exercise 5 — Scatter plot of body mass and flipper length (5 points)
 
