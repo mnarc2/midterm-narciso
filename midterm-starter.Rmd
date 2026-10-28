@@ -42,30 +42,31 @@ library(palmerpenguins)
 **Goal:** Inspect the size and variable types of `penguins`.
 
 ```{r glimpse-penguins, eval = FALSE}
-# Your code here
+glimpse(penguins)
 ```
 
-> Replace this text with the number of rows and variables, and how many are categorical versus numerical.
+> There are 344 rows and 8 variables. There are 3 categorical variables and 5 numerical variables.
 
 ## Exercise 2 — Variable names (5 points)
 
 **Goal:** Explain why the column names are “good.”
 
 ```{r names-penguins, eval = FALSE}
-# Your code here
+names(penguins)
 ```
 
-> Replace this text with why the names are “good,” referencing things we normally fix in bad names.
+> The column names are good names in R syntax because it is in snake case, which means its all in lowercase and any spaces use underscore.
 
 ## Exercise 3 — Count by species (5 points)
 
 **Goal:** Produce a frequency table.
 
 ```{r count-species, eval = FALSE}
-# Your code here
+penguins %>%
+count(species)
 ```
 
-> Replace this text with the pair of data-wrangling functions that could produce a similar output.
+> You can also use group_by() and summarize().
 
 ## Exercise 4 — Bar plot by island and species (5 points)
 
